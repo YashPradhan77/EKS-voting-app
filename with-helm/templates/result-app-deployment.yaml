@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.resultapp.deployName }}
+  labels:
+    name: {{ .Values.resultapp.deployName }}
+    app: {{ .Values.appName }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: {{ .Values.resultapp.podName }}
+      app: {{ .Values.appName }}  
+  template:
+    metadata:
+      name: {{ .Values.resultapp.podName }}    
+      labels:
+        name: {{ .Values.resultapp.podName }}
+        app: {{ .Values.appName }}  
+    spec:
+      containers:
+      - name: result-app
+        image: kodekloud/examplevotingapp_result:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 80

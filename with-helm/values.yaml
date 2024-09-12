@@ -1,0 +1,29 @@
+appName: demo-voting-app
+
+votingapp:
+    deployName: voting-app-deploy
+    serviceName: voting-service
+    podName: voting-app-pod  
+
+redis:
+  deployName: redis-deploy
+  serviceName: redis-service
+  podName: redis-pod
+
+worker:
+  deployName: worker-deploy 
+  podName: worker-pod
+
+resultapp:
+  deployName: result-app-deploy
+  serviceName: result-service
+  podName: result-app-pod
+
+postgres:
+  deployName: postgres-deployment
+  serviceName: postgres-service
+  podName: postgres-pod
+  image:  
+    name: postgres
+    tag: 9.4
+

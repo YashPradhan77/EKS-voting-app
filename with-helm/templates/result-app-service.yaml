@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.resultapp.serviceName }}
+  labels:
+    name: {{ .Values.resultapp.podName }}
+    app: {{ .Values.appName }}
+spec:
+  type: NodePort
+  selector:
+    name: {{ .Values.resultapp.podName }}
+    app: {{ .Values.appName }}
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30005

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.votingapp.serviceName }}
+  labels:
+    name: {{ .Values.votingapp.serviceName }}
+    app: {{ .Values.appName }}
+spec:
+  type: NodePort
+  selector:
+    name: {{ .Values.votingapp.podName }}
+    app: {{ .Values.appName }}
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30004
