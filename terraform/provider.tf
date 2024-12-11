@@ -7,6 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket = "eks-voting-app-terraform-bucket "
+    key = "key/terraform.tfstate"
   }
 }
 
