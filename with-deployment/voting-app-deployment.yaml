@@ -1,5 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
+<<<<<<< HEAD
+=======
+namespace: voting-app
+>>>>>>> fdf72f7 (changes to with-deployment)
 metadata:
   name: voting-app-deploy
   labels:
@@ -20,8 +24,16 @@ spec:
     spec:
       containers:
       - name: voting-app
+<<<<<<< HEAD
         image: kodekloud/examplevotingapp_vote:v1
         resources:
+=======
+        image: dockersamples/examplevotingapp_vote
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+>>>>>>> fdf72f7 (changes to with-deployment)
           limits:
             memory: "128Mi"
             cpu: "500m"

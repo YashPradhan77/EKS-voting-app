@@ -11,6 +11,13 @@ spec:
     name: voting-app-pod
     app: demo-voting-app
   ports:
+<<<<<<< HEAD
   - port: 80
     targetPort: 80
     nodePort: 30004
+=======
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    # nodePort: 30004
+>>>>>>> fdf72f7 (changes to with-deployment)
