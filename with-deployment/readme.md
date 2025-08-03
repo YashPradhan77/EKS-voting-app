@@ -36,7 +36,7 @@ eksctl create cluster --name my-cluster --region us-east-1 --nodegroup-name stan
         1. policy = curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
     2. eksctl create iamserviceaccount --cluster=<Cluster-name> --namespace=kube-system  --    name=aws-load-balancer-controller --role-name AmazonEKSLoadBalancerControllerRole 
     --attach-policy-arn=arn:aws:iam::<your-aws-account-id>:policy/AWSLoadBalancerControllerIAMPolicy --approve
-4. Create load balancer controller role.
+4. Create load balancer controller role
 5. Create service-account.yml
 6. Add eks-charts helm repository and update.
     
