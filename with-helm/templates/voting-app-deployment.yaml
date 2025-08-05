@@ -6,7 +6,7 @@ metadata:
     name: {{ .Values.votingapp.deployName }}
     app: {{ .Values.appName }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.votingapp.replicaCount }}
   selector:
     matchLabels:
       name: {{ .Values.votingapp.podName }}
@@ -19,11 +19,14 @@ spec:
         app: {{ .Values.appName }}
     spec:
       containers:
-      - name: voting-app
-        image: kodekloud/examplevotingapp_vote:v1
+      - name: {{ .Chart.Name }} 
+        image: {{ .Values.votingapp.containerImage }}
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: {{ .Values.votingapp.containerMemory }}
+            cpu: {{ .Values.votingapp.containerCPU }}
+          requests:
+            memory: {{ .Values.votingapp.containerMemory }}
+            cpu: {{ .Values.votingapp.containerCPU }}
         ports:
-          - containerPort: 80
+          - containerPort: {{ .Values.votingapp.containerPort }}

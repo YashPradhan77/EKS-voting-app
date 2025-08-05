@@ -10,12 +10,9 @@ spec:
   - name: redis
     image: redis
     resources:
-<<<<<<< HEAD
-=======
       requests:
         memory: "64Mi"
         cpu: "250m"
->>>>>>> fdf72f7 (changes to with-deployment)
       limits:
         memory: "128Mi"
         cpu: "500m"

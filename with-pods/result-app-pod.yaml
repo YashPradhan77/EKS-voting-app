@@ -8,16 +8,11 @@ metadata:
 spec:
   containers:
   - name: result-app
-<<<<<<< HEAD
-    image: kodekloud/examplevotingapp_result:v1
-    resources:
-=======
     image: dockersamples/examplevotingapp_result
     resources:
       requests:
         memory: "64Mi"
         cpu: "250m"  
->>>>>>> fdf72f7 (changes to with-deployment)
       limits:
         memory: "128Mi"
         cpu: "500m"

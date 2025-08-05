@@ -4,6 +4,11 @@ votingapp:
     deployName: voting-app-deploy
     serviceName: voting-service
     podName: voting-app-pod  
+    containerImage: kodekloud/examplevotingapp_vote:v1
+    repicaCount: 1 
+    containerPort: 80
+    containerMemory: "128Mi"
+    containerCPU: "500m"
 
 redis:
   deployName: redis-deploy

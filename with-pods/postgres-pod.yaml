@@ -10,12 +10,9 @@ spec:
   - name: postgres
     image: postgres
     resources:
-<<<<<<< HEAD
-=======
       requests:
         memory: "64Mi"
         cpu: "250m"
->>>>>>> fdf72f7 (changes to with-deployment)
       limits:
         memory: "128Mi"
         cpu: "500m"
@@ -25,8 +22,4 @@ spec:
       - name: POSTGRES_USER
         value: "postgres"
       - name: POSTGRES_PASSWORD
-<<<<<<< HEAD
-        value: "postgres"
-=======
         value: "postgres" 
->>>>>>> fdf72f7 (changes to with-deployment)
