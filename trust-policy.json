@@ -4,17 +4,15 @@
     {
       "Effect": "Allow",
       "Principal": {
-        "Federated": "arn:aws:iam::ACCOUNT_ID:oidc-provider/OIDC_PROVIDER_URL"
+        "Federated": "arn:aws:iam::898896902478:oidc-provider/token.actions.githubusercontent.com"
       },
       "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition": {
-        "StringEquals": {
-          "OIDC_PROVIDER_URL:aud": "sts.amazonaws.com"
-        },
-        "StringLike": {
-          "OIDC_PROVIDER_URL:sub": "repo:YashPradhan77/EKS-voting-app:*"
-        }
-      }
+            "Condition": {
+                "StringEquals": {
+                    "token.actions.githubusercontent.com:sub": "EKS-voting-app:YashPradhan77/*",
+                    "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
+                }
+            }
     }
   ]
 }
