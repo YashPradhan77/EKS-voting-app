@@ -2,11 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Values.votingapp.serviceName }}
+  namespace: {{ .Values.namespace }}
   labels:
     name: {{ .Values.votingapp.serviceName }}
     app: {{ .Values.appName }}
 spec:
-  type: NodePort
+  type: {{ .Values.votingapp.type }}
   selector:
     name: {{ .Values.votingapp.podName }}
     app: {{ .Values.appName }}

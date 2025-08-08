@@ -2,11 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.redis.deployName }}
+  namespace: {{ .Values.namespace }}  
   labels:
     name: {{ .Values.redis.deployName }}
     app: {{ .Values.appName }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.redis.replicaCount }}
   selector:
     matchLabels:
       name: {{ .Values.redis.podName }}
@@ -20,10 +21,13 @@ spec:
     spec:
       containers:
       - name: redis
-        image: redis
+        image: "{{ .Values.redis.containerImage }}"
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: {{ .Values.redis.containerMemory }}
+            cpu: {{ .Values.redis.containerCPU }}
+          requests:
+            memory: {{ .Values.redis.containerMemory }}
+            cpu: {{ .Values.redis.containerCPU }}
         ports:
           - containerPort: 6379

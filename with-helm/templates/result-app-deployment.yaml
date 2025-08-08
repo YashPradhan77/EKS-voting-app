@@ -2,11 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.resultapp.deployName }}
+  namespace: {{ .Values.namespace }}
   labels:
     name: {{ .Values.resultapp.deployName }}
     app: {{ .Values.appName }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.resultapp.replicaCount }}
   selector:
     matchLabels:
       name: {{ .Values.resultapp.podName }}
@@ -20,10 +21,13 @@ spec:
     spec:
       containers:
       - name: result-app
-        image: kodekloud/examplevotingapp_result:v1
+        image: {{ .Values.resultapp.containerImage }}
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: {{ .Values.resultapp.containerMemory }}
+            cpu: {{ .Values.resultapp.containerCPU }}
+          requests:
+            memory: {{ .Values.resultapp.containerMemory }}
+            cpu: {{ .Values.resultapp.containerCPU }}
         ports:
-          - containerPort: 80
+          - containerPort: {{ .Values.resultapp.containerPort }}

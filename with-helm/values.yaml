@@ -1,28 +1,38 @@
 appName: demo-voting-app
+namespace: voting-app
 
 votingapp:
     deployName: voting-app-deploy
     serviceName: voting-service
     podName: voting-app-pod  
-    containerImage: kodekloud/examplevotingapp_vote:v1
     repicaCount: 1 
+    containerImage: dockersamples/examplevotingapp_vote
     containerPort: 80
     containerMemory: "128Mi"
     containerCPU: "500m"
-
-redis:
-  deployName: redis-deploy
-  serviceName: redis-service
-  podName: redis-pod
-
-worker:
-  deployName: worker-deploy 
-  podName: worker-pod
+    type: NodePort
+    nodePort: 30004
 
 resultapp:
   deployName: result-app-deploy
   serviceName: result-service
   podName: result-app-pod
+  replicaCount: 1
+  containerImage: dockersamples/examplevotingapp_result
+  containerMemory: "128Mi"
+  containerCPU: "500m" 
+  containerPort: 80
+  nodePort: 30005
+  type: NodePort
+
+redis:
+  deployName: redis-deploy
+  serviceName: redis-service
+  podName: redis-pod
+  containerImage: redis
+  repicaCount: 1
+  containerMemory: "128Mi"
+  containerCPU: "500m"
 
 postgres:
   deployName: postgres-deployment
@@ -31,4 +41,13 @@ postgres:
   image:  
     name: postgres
     tag: 9.4
+  replicaCount: 1
+  containerMemory: "128Mi"
+  containerCPU: "500m"
 
+worker:
+  deployName: worker-deploy 
+  podName: worker-pod
+  containerImage: dockersamples/examplevotingapp_worker
+  containerMemory: "128Mi"
+  containerCPU: "500m"

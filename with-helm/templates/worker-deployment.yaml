@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.worker.deployName }}
+  namespace: {{ .Values.namespace }}   
   labels:
     name: {{ .Values.worker.deployName }}
     app: {{ .Values.appName }}
@@ -20,9 +21,12 @@ spec:
     spec:
       containers:
         - name: worker-app
-          image: kodekloud/examplevotingapp_worker:v1
+          image: {{ .Values.worker.containerImage }}
           resources:
             limits:
-              memory: "128Mi"
-              cpu: "500m"
+              memory: {{ .Values.worker.containerMemory }}
+              cpu: {{ .Values.worker.containerCPU }}
+            requests:
+              memory: {{ .Values.worker.containerMemory }}
+              cpu: {{ .Values.worker.containerCPU }}  
 

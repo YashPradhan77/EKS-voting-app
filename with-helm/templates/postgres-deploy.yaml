@@ -2,10 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.postgres.deployName }}
+  namespace: {{ .Values.namespace }}
   labels:
     app: {{ .Values.appName }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.postgres.replicaCount }}
   selector:
     matchLabels:
       name: {{ .Values.postgres.podName }}
@@ -22,8 +23,12 @@ spec:
         image: "{{ .Values.postgres.image.name}}:{{ .Values.postgres.image.tag}}"
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: {{ .Values.postgres.containerMemory }}
+            cpu: {{ .Values.postgres.containerCPU }}
+          requests:         
+            memory: {{ .Values.postgres.containerMemory }}
+            cpu: {{ .Values.postgres.containerCPU }}
+        # Environment variables for PostgreSQL  
         env:
         - name: POSTGRES_USER
           value: postgres
