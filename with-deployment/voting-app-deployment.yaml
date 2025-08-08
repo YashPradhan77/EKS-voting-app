@@ -3,6 +3,7 @@ kind: Deployment
 namespace: voting-app
 metadata:
   name: voting-app-deploy
+  namespace: voting-app
   labels:
     name: voting-app-deploy
     app: demo-voting-app
